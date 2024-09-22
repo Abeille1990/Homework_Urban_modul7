@@ -11,8 +11,8 @@ def custom_write(file_name, strings):
         b = file.tell()
         file.write(f'{n}\n')
         c = strings.index(n)+1
-        coordinates = (b,c)
-        string_positions[coordinates ] = n
+        coordinates = (c,b)
+        string_positions[coordinates] = n
     file.close()
     # print(string_positions)
     return string_positions
