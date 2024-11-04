@@ -16,27 +16,19 @@ class WordsFinder:
 
     def find(self, word):
         word = word.lower()
-        for name, words in self.get_all_words().items():
-            if word in words:
-                index = words.index(word) + 1
-                return {name, index}
+        find_d = {name: words.index(word) + 1 for name, words in self.get_all_words().items() if word in words}
+        return find_d
 
     def count(self, word):
         word = word.lower()
-        for name, words in self.get_all_words().items():
-            if word in words:
-                count_ = words.count(word)
-                return {name, count_}
+        count_d = {name: words.count(word) for name, words in self.get_all_words().items()}
+        return count_d
 
 
-f1 = WordsFinder('test_file.txt')
-f2 = WordsFinder('Walt Whitman - O Captain! My Captain!.txt')
+f1 = WordsFinder('test_file.txt', 'Walt Whitman - O Captain! My Captain!.txt')
+
 print(f1.get_all_words())
-print(f1.find("TEXT"))
-print(f1.count("teXT"))
-print(f2.find("fearful"))
-print(f2.count("fearFul"))
+print(f1.find("FoR"))
+print(f1.count("For"))
 
 
-# , 'Walt Whitman - O Captain! My Captain!.txt',
-#                  'Mother Goose - Monday’s Child.txt','Rudyard Kipling - If.txt'
